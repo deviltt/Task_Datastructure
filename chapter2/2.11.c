@@ -86,6 +86,8 @@ void Algo_2_11(SqList *L, int e)
 	}
 
 	(*L).base[i] = e;
+
+	(*L).length++;
 }
 
 int main()
@@ -94,7 +96,7 @@ int main()
 	int i;
 
 	if(ListInit_Sq(&L)){
-		for(i=0; i<10; i++)
+		for(i=1; i<=10; i++)
 			ListInsert_Sq(&L, i, 2*i);
 	}
 	printf("L: ");
