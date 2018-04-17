@@ -10,7 +10,7 @@ typedef struct LNode{
 
 int ListInit(LinkList *L)
 {
-	*L = (LinkList)malloc(sizeof(LNode));
+	(*L) = (LinkList)malloc(sizeof(LNode));
 
 	if(!(*L))
 		exit(1);
@@ -27,7 +27,7 @@ void ListInsert(LinkList L, int i, int e)
 
 	p = L;
 
-	while(p && j > i-1){
+	while(p && j < i-1){
 		p = p->next;
 		j++;
 	}
@@ -98,7 +98,7 @@ int main()
 	if(ListInit(&ha) && ListInit(&hb) && ListInit(&hc)){
 		for(i=1; i<5; i++)
 			ListInsert(ha, i, i);
-		for(i=5; i<7; i++)
+		for(i=1; i<7; i++)			//错误的原因:一开始的赋值应该从1开始,如果从大于1的开始就会出错,因为链表还没有创建啊
 			ListInsert(hb, i, i);
 	}
 
