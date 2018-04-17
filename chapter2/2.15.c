@@ -27,10 +27,13 @@ void ListInsert(LinkList L, int i, int e)
 
 	p = L;
 
-	while(p && j < i-1){
+	while(p && j > i-1){
 		p = p->next;
 		j++;
 	}
+
+//	if(!p || j > i-1)
+//		exit(1);
 
 	q = (LinkList)malloc(sizeof(LNode));
 
@@ -70,17 +73,17 @@ void Algo_2_15(LinkList ha, LinkList hb, LinkList *hc)
 		pa = ha;
 		pb = hb;
 
-		while(ha->next && hb->next){
-			ha = ha->next;
-			hb = hb->next;
+		while(pa->next && pb->next){
+			pa = pa->next;
+			pb = pb->next;
 		}
 
-		if(!ha->next){
+		if(!pa->next){
 			*hc = ha;
 			pa->next = hb->next;
 		}
 
-		if(!hb->next){
+		if(!pb->next){
 			*hc = hb;
 			pb->next = ha->next;
 		}
