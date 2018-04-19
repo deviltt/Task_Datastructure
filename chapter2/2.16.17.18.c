@@ -49,8 +49,8 @@ void ListInsert(LinkList *L, int i, int e)
 		p->next = q;
 	}
 }
-
-/*
+	
+/*	
 void ListInsert(LinkList L, int i, int e)
 {
 	LinkList p, q;
@@ -99,7 +99,7 @@ void ListTraverse(LinkList L, void (Visit)(ElemType))
 	}
 }
 
-void Algo_2_16(LinkList *L1, LinkList *L2, int i, int j, int len)
+void Algo_2_16(LinkList *L1, LinkList *L2, int i, int j, int len)	//将la中第i个元素起一共len个元素连接到lb中第j个元素之前
 {
 	LinkList p, p_next, p_pre, q;
 
@@ -108,20 +108,20 @@ void Algo_2_16(LinkList *L1, LinkList *L2, int i, int j, int len)
 	p = *L1;
 	q = *L2;
 
-	while(p && k1 < i-1){
+	while(p && k1 < i-1){		//将指针p定位到第 i-1 个元素
 		k1++;
 		p = p->next;
 	}
 	
-	p_pre = p;
+	p_pre = p;		
 	p_next = p->next;
 
-	while(p && k1 < i+len-1){
+	while(p && k1 < i+len-1){	//将指针p定位到第 i+len-1 个元素 目的是方便后面 链接 的方便
 		k1++;
 		p = p->next;
 	}
 
-	while(q && k2 < j-1){
+	while(q && k2 < j-1){		//将指针q定位到第 j-1 个元素
 		k2++;
 		q = q->next;
 	}
