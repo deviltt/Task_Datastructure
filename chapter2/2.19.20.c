@@ -68,10 +68,60 @@ void ListTraverse(LinkList L, void (Visit)(ElemType))
 	}
 }
 
+void Algo_2_19(LinkList L)
+{
+	int value;
+	LinkList p, pre, q;
+
+	p = L->next;
+	
+	value = p->data;
+	pre = p;
+	p = p->next;
+
+	while(p){
+		if(p->data == value){
+			q = p;
+			p = p->next;
+			pre->next = p;
+			free(q);
+		}
+		else{
+			value = p->data;
+			pre = p;
+			p = p->next;
+			
+		}
+	}
+ 
+}
+
+void Algo_2_20(LinkList L, int min, int max)
+{
+	LinkList p, pre, q;
+
+	p = L;
+	pre = p;
+	p = p->next;
+
+	while(p){
+		if(p->data >= min && p->data <= max){
+			q = p;
+			p = p->next;
+			pre->next = p;
+			free(q);	
+		}
+		else{
+			pre = p;
+			p = p->next;
+		}
+	}
+}
+
 int main()
 {
 	LinkList L;
-	int a[] = {1,2,2,3,4,5,6,6,6,8};
+	int a[] = {1,2,2,2,4,4,6,6,6,9};
 	int i, min = 2, max = 7;
 
 	if(ListInit(&L)){
@@ -82,7 +132,7 @@ int main()
 	printf("初始創建的線性表爲：\n");
 	ListTraverse(L, PrintElem);
 	printf("\n");
-/*
+
 	printf("將相同的元素刪除：\n");
 	Algo_2_19(L);
 	ListTraverse(L, PrintElem);
@@ -90,7 +140,7 @@ int main()
 
 	printf("將指定範圍內的元素刪除：\n");
 	Algo_2_20(L, min, max);
-	ListTraverse(L, PrintElem);*/
+	ListTraverse(L, PrintElem);
 	printf("\n");
 
 	return 0;
