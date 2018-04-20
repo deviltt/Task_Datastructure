@@ -62,28 +62,31 @@ void ListTraverse(LinkList L, void (Visit)(ElemType))
 
 void Algo_2_23(LinkList La, LinkList Lb, LinkList *Lc)
 {
-	LinkList p, q, pre_p, pre_q;
+	LinkList pa, pb, cur;
+	int i = 0;
 
 	*Lc = La;
+	cur = La;
 
-	p = La->next;
-	q = Lb->next;
+	pa = La->next;
+	pb = Lb->next;
 
-	while(p && q){
-		p->next = q;
-		q->next = p->next;
-		pre_p = p;
-		pre_q = q;
-		p = p->next;
-		q = q->next;
+	while(pa && pb){
+		i++;
+		if(i % 2){
+			cur->next = pa;
+			cur = pa;
+			pa = pa->next;
+		}
+		else{
+			cur->next = pb;
+			cur = pb;
+			pb = pb->next;	
+		}
 	}
 
-	if(!p){
-		pre_p->next = q;
-	}
-	
-	if(!q){
-		pre_q->next = p;
+	if(!pa){
+		cur->next = pb;
 	}
 }
 
