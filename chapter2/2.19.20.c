@@ -33,9 +33,6 @@ void ListInsert(LinkList L, int i, int e)
 	LinkList p, q;
 	int j = 0;
 
-	if(i < 0)
-		exit(1);
-
 	p = L;
 
 	while(p && j<i-1){
@@ -63,11 +60,11 @@ void ListTraverse(LinkList L, void (Visit)(ElemType))
 {
 	LinkList p;
 
-	p = L;
+	p = L->next;
 
 	while(p){
-		p = p->next;
 		Visit(p->data);
+		p = p->next;
 	}
 }
 
