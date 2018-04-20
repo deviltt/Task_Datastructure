@@ -73,7 +73,7 @@ void Algo_2_22(LinkList L)
 		pre = p;
 		p = p->next;
 		pre->next = L->next;
-		L->next = pre;
+		L->next = pre;		//這一步的作用在於爲下一個pre->next做索引
 	}
 }
 
