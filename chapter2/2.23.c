@@ -60,6 +60,7 @@ void ListTraverse(LinkList L, void (Visit)(ElemType))
 	}
 }
 
+/*
 void Algo_2_23(LinkList La, LinkList Lb, LinkList *Lc)
 {
 	LinkList pa, pb, cur;
@@ -88,7 +89,40 @@ void Algo_2_23(LinkList La, LinkList Lb, LinkList *Lc)
 	if(!pa){
 		cur->next = pb;
 	}
+
+	free(Lb);
+	Lb = NULL;
 }
+*/
+
+void Algo_2_23(LinkList La, LinkList Lb, LinkList *Lc)
+{
+	LinkList pa, pb, prea, preb;
+	int i = 0;
+
+	*Lc = La;
+
+	pa = La->next;
+	pb = Lb->next;
+
+	while(pa && pb){
+		i++;
+		if(i % 2){
+			prea = pa;
+			pa = pa->next;	
+			prea->next = pb;
+		}
+		else{
+			preb = pb;
+			pb = pb->next;
+			preb->next = pa;
+		}
+	}
+
+	free(Lb);
+	Lb = NULL;
+}
+
 
 int main()
 {
